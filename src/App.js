@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import NoteList from './NoteList';
 import FolderList from './FolderList';
 import Note from './Note'
+import FolderView from './FolderView'
 
 
 class App extends React.Component {
@@ -153,12 +154,9 @@ class App extends React.Component {
         </Route>
 
         <Route
-          path='/folder/:folderId'>
-          <FolderList folders={this.state.folders} folderFilter={this.folderFilter} />
-          <NoteList notes={this.state.notes} folders={this.state.folders} filterId={this.state.filterId} />
-          <Link to='/NewNote'>New Note</Link>
-
-        </Route>
+          path='/folder/:folderId'
+          render={(props) => <FolderView  {...props} notes={this.state.notes} folders={this.state.folders} />}
+        />
         <Route path='/note/:noteId'
           render={(props) => <Note  {...props} notes={this.state.notes} />}
         />
