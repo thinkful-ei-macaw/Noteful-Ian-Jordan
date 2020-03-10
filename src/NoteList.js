@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom'
 import Note from './Note'
 
 class NoteList extends React.Component {
-notes = this.props.notes;
-    render() { 
-    if (this.props.folders.id) {
-      notes = this.notes.filter(note => 
-        note.folderId == this.props.folders.id
+
+  render() {
+    let notes = this.props.notes;
+    if (this.props.filterId) {
+      notes = notes.filter(note =>
+        note.folderId == this.props.filterId
       )
     }
-    this.notes.map(note => 
-        <Note content=''name="note.name" modified="note.modified"/> )
+    return (notes.map(note =>
+      <li>
+        <Link to={`/note/${note.id}`}>{note.name}</Link>
+      </li>))
+  }
 }
-
 export default NoteList 
