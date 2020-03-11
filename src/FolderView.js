@@ -1,26 +1,21 @@
 import React from 'react'
 import NoteList from './NoteList'
 import { Link } from 'react-router-dom'
+import FolderList from './FolderList'
 
-class FolderList extends React.Component {
-  defaultProps = {
-    state: {
-      folders: {},
-      notes: {}
-    }
-  }
+class FolderView extends React.Component {
+
   render() {
     const folders = this.props.folders;
     const notes = this.props.notes;
-    console.log(folders)
-    console.log(notes)
+
     return (<>
-      <FolderList folders={folders} folderFilter={"b0715efe - ffaf - 11e8 - 8e b2-f2801f1b9fd1"} />
-      <NoteList notes={notes} folders={folders} filterId={false} />
+      <FolderList folders={folders} />
+      <NoteList notes={notes.filter(n => n.folderId === this.props.match.params.folderId)} folders={folders} filterId={false} />
       <Link to='/NewNote'>New Note</Link>
     </>)
   }
 }
 
 
-export default FolderList
+export default FolderView

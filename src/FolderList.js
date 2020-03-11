@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 class FolderList extends React.Component {
   render() {
     return (<ul>
-      {this.props.folders.map(folder => <Link to={`/folder/${folder.id}`}><li onClick={() => this.props.folderFilter(folder.id)}>
-        {folder.name}
-      </li></Link>)}
+      {this.props.folders.map(folder => <li>
+        <Link to={`/folder/${folder.id}`}>
+          {folder.name}
+        </Link>
+      </li>)}
     </ul>)
   }
 }

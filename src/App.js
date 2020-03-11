@@ -155,10 +155,10 @@ class App extends React.Component {
 
         <Route
           path='/folder/:folderId'
-          render={(props) => <FolderView  {...props} notes={this.state.notes} folders={this.state.folders} />}
+          render={(rprops) => <FolderView  {...rprops} notes={this.state.notes} folders={this.state.folders} />}
         />
         <Route path='/note/:noteId'
-          render={(props) => <Note  {...props} notes={this.state.notes} />}
+          render={(rprops) => <Note  {...rprops} notes={this.state.notes} />}
         />
       </div >
 
